@@ -2,6 +2,18 @@
 #include <vector>
 using namespace std;
 
+int capacity(int numb)
+{
+	int i = 0;
+	while (numb != 0)
+	{
+		numb /= 10;
+		++i;
+	}
+	
+	return i;
+}
+
 vector<int> numbers(int N)
 {
 	int n = N;
