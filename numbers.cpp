@@ -14,26 +14,39 @@ int capacity(int numb)
 	return i;
 }
 
-vector<int> numbers(int N)
+template<typename T>
+vector<T> parseStringToNumber(string str)
 {
-	int n = N;
-	vector <int> Vector;
-	int var;
-	int j = capacity(N);
+	bool b;
+	if (typeid(T).name == "int")
+		b = true;
+	if (typeid(T).name == "double" || typeid(T).name == "float")
+		b = false;
 
-    for(int i = 0; i < j;i++)
+    vector<T> vec;
+    for (int beg = 0, end = 0; end != str.size() ; end++)
     {
-		var = n;
-		while (var > 10)
-			var /= 10;
-		Vector.push_back(var);
+        if (str[end] == ' ')
+        {
+			if(b)
+				vec.push_back( atoi(str.substr(beg, end - beg).c_str()) );
+			else vec.push_back( atof(str.substr(beg, end - beg).c_str()) );
+            beg = ++end;
+        }
 
-		n -= var * pow(10, capacity(n) - 1);
+        if (end == str.size() - 1)
+        {
+			if(b)
+				vec.push_back( atoi(str.substr(beg, end - beg + 1).c_str()) );
+			else vec.push_back( atof(str.substr(beg, end - beg + 1).c_str()) );
+            break;
+        }
+        
     }
-
-	return Vector;
+    
+    return vec;
+    
 }
-
 int main()
 {
 	
