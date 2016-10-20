@@ -4,16 +4,11 @@
 #include <cstdlib>
 using namespace std;
 
-int main()
+vector<int> parseStringToInt(string str)
 {
-	string str;
-	getline(cin, str);
 	vector<int> vec;
-
 	for (int beg = 0, end = 0; end != str.size() ; end++)
 	{
-
-
 		if (str[end] == ' ')
 		{
 			vec.push_back( atoi(str.substr(beg, end - beg).c_str()) );
@@ -27,6 +22,16 @@ int main()
 		}
 		
 	}
+	
+	return vec;
+	
+}
+
+int main()
+{
+	string str;
+	getline(cin, str);
+	vector<int> vec = parseStringToInt(str);
 
 	for (int i = 0; i < vec.size(); i++)
 		cout << vec[i] << endl;
