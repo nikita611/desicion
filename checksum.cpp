@@ -9,9 +9,9 @@ int checksum(vector<int> vec)
 
 
     unsigned long long sum = 0;
-    for (int i = 0; i < v.size(); i++)
+    for (int i = 0; i < vec.size(); i++)
     {
-        sum = (sum + v[i]) * 113;
+        sum = (sum + vec[i]) * 113;
             sum %= limit;
     }
 
